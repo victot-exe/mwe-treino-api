@@ -18,13 +18,32 @@ repositories {
 }
 
 dependencies {
-	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-	implementation 'org.springframework.boot:spring-boot-starter-security'
-	implementation 'org.springframework.boot:spring-boot-starter-validation'
+	// 🌐 1. Web & REST API (Endpoints, Controllers e Serialização HTTP)
 	implementation 'org.springframework.boot:spring-boot-starter-webmvc'
-	compileOnly 'org.projectlombok:lombok'
+
+	// 🗄️ 2. Persistência de Dados (JPA / Hibernate e Driver do PostgreSQL)
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 	runtimeOnly 'org.postgresql:postgresql'
+
+	// 🛡️ 3. Validação de Dados (Anotações como @NotBlank, @NotNull, @Valid nos DTOs)
+	implementation 'org.springframework.boot:spring-boot-starter-validation'
+
+	// 🔐 4. Segurança e Controle de Acesso (Spring Security)
+	implementation 'org.springframework.boot:spring-boot-starter-security'
+
+	// 🎟️ 5. Geração e Validação de Tokens JWT (JJWT)
+	// Contratos e interfaces públicas para gerar/ler tokens
+	implementation 'io.jsonwebtoken:jjwt-api:0.12.5'
+	// Implementação dos algoritmos criptográficos em tempo de execução
+	runtimeOnly 'io.jsonwebtoken:jjwt-impl:0.12.6'
+	// Suporte para serialização do payload/claims em JSON usando o Jackson
+	runtimeOnly 'io.jsonwebtoken:jjwt-jackson:0.12.5'
+
+	// ⚡ 6. Produtividade & Boilerplate (Lombok para Getters, Setters, Builders, etc.)
+	compileOnly 'org.projectlombok:lombok'
 	annotationProcessor 'org.projectlombok:lombok'
+
+	// 🧪 7. Testes Automatizados (JUnit, MockMvc e utilitários de teste do ecossistema Spring)
 	testImplementation 'org.springframework.boot:spring-boot-starter-data-jpa-test'
 	testImplementation 'org.springframework.boot:spring-boot-starter-security-test'
 	testImplementation 'org.springframework.boot:spring-boot-starter-validation-test'
