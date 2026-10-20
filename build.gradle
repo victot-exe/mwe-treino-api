@@ -30,6 +30,7 @@ dependencies {
 
 	// 🔐 4. Segurança e Controle de Acesso (Spring Security)
 	implementation 'org.springframework.boot:spring-boot-starter-security'
+    implementation 'com.google.api-client:google-api-client:2.7.0'
 
 	// 🎟️ 5. Geração e Validação de Tokens JWT (JJWT)
 	// Contratos e interfaces públicas para gerar/ler tokens

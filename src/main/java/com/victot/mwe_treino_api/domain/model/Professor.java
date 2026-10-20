@@ -46,14 +46,25 @@ public class Professor implements UserDetails {
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "professor")
     private List<Aluno> alunos;
 
-    public Professor(String name, String email, String password, AuthProvider authProvider) {
+    public Professor(String name, String email, String password) {
         this.name = name;
         this.email = email;
         this.password = password;
         this.enabled = true;
         this.createAt = LocalDateTime.now();
         this.updateAt = LocalDateTime.now();
-        this.authProvider = authProvider;
+        this.authProvider = AuthProvider.LOCAL;
+    }
+
+    public Professor(String name, String email, String pictureUrl, String googleId) {
+        this.name = name;
+        this.email = email;
+        this.pictureUrl = pictureUrl;
+        this.googleId = googleId;
+        this.enabled = true;
+        this.createAt = LocalDateTime.now();
+        this.updateAt = LocalDateTime.now();
+        this.authProvider = AuthProvider.GOOGLE;
     }
 
     @Override
