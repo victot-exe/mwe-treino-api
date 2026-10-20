@@ -3,6 +3,7 @@ package com.victot.mwe_treino_api.domain.model;
 import com.victot.mwe_treino_api.domain.enums.AuthProvider;
 import jakarta.persistence.*;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.jspecify.annotations.Nullable;
 import org.springframework.security.core.GrantedAuthority;
@@ -15,6 +16,7 @@ import java.util.List;
 @Entity
 @Getter
 @Setter
+@NoArgsConstructor
 public class Professor implements UserDetails {
 
     @Id
@@ -41,8 +43,18 @@ public class Professor implements UserDetails {
     @Column(length = 50)
     private AuthProvider authProvider;
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "professor")
     private List<Aluno> alunos;
+
+    public Professor(String name, String email, String password, AuthProvider authProvider) {
+        this.name = name;
+        this.email = email;
+        this.password = password;
+        this.enabled = true;
+        this.createAt = LocalDateTime.now();
+        this.updateAt = LocalDateTime.now();
+        this.authProvider = authProvider;
+    }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
