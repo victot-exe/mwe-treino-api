@@ -28,4 +28,8 @@ public class Exercicio {
     @Column(name = "grupo_muscular", nullable = false, length = 50)
     @Builder.Default
     private GrupoMuscular grupoMuscular = GrupoMuscular.Geral;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "professor_id")
+    private Professor professor;
 }

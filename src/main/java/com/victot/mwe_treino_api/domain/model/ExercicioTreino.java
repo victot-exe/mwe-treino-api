@@ -39,4 +39,13 @@ public class ExercicioTreino {
     @Column(nullable = false)
     @Builder.Default
     private Integer ordem = 0;
+
+    public ExercicioTreino(Exercicio exercicio, int repeticoes, int series, int descanso, int carga, int ordem){
+        this.exercicio = exercicio;
+        this.repeticoes = repeticoes;
+        this.series = series;
+        this.descanso = descanso;
+        this.carga = carga;
+        this.ordem = ordem;
+    }
 }
